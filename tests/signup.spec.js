@@ -33,7 +33,7 @@ const { getLatestUser } = require('../utils/testData');
     const user = getLatestUser();
     await signupPage.goto();
     await signupPage.login(user.email, user.password);
-    await signupPage.verifyLoggedInAs(user.usernamee);
+    await signupPage.verifyLoggedInAs(user.username);
     await signupPage.deleteAccount();
   });
 

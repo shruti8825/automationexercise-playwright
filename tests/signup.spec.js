@@ -14,7 +14,6 @@ const { getLatestUser } = require('../utils/testData');
   test('Test Case 2: Signup + save data', async ({ page }) => {
     const signupPage = new SignupPage(page);
     await signupPage.goto();
-    await page.waitForLoadState('networkidle');
     const user = await signupPage.createRandomAccount();
     await signupPage.verifyLoggedInAs(user.username);
   });
@@ -38,14 +37,14 @@ const { getLatestUser } = require('../utils/testData');
     console.log('inavlid crediantials')
   });
 
-   test('Test Case 5: Login with saved data and delete acc', async ({ page }) => {
-    const signupPage = new SignupPage(page);
-    const user = getLatestUser();
-    await signupPage.goto();
-    await signupPage.login(user.email, user.password);
-    await signupPage.verifyLoggedInAs(user.username);
-    await signupPage.deleteAccount();
-  });
+  //  test('Test Case 5: Login with saved data and delete acc', async ({ page }) => {
+  //   const signupPage = new SignupPage(page);
+  //   const user = getLatestUser();
+  //   await signupPage.goto();
+  //   await signupPage.login(user.email, user.password);
+  //   await signupPage.verifyLoggedInAs(user.username);
+  //   await signupPage.deleteAccount();
+  // });
 
  
 

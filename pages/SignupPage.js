@@ -107,7 +107,7 @@ class SignupPage extends BasePage {
   }
 
   async verifyLoggedInAs(username) {
-    await expect(this.page.locator(this.loggedInText)).toContainText(username);
+    await expect(this.page.locator(this.loggedInnText)).toContainText(username);
     console.log("verified");
   }
 

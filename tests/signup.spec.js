@@ -6,7 +6,7 @@ const { getLatestUser } = require('../utils/testData');
  test('Test case 1 : open website and fetch all <p>', async ({page}) => {
       const signupPage = new SignupPage(page);
       await signupPage.goto();
-      await page.waitForLoadState('networkidle');
+      await page.waitForLoadState('networkidle'); // inconsistent
      const dressnames = await page.locator(".productinfo.text-center p").allTextContents();
       console.log('All product names:', dressnames);
   });
@@ -37,7 +37,16 @@ const { getLatestUser } = require('../utils/testData');
     console.log('inavlid crediantials')
   });
 
-  //  test('Test Case 5: Login with saved data and delete acc', async ({ page }) => {
+  test('Test Case 5: verify already registered user', async ({ page }) => {
+    const signupPage = new SignupPage(page);
+    const user1 = getLatestUser();
+    await signupPage.goto();
+    await signupPage.existingUserSignup(user1.username, user1.email)
+    await expect(page.locator(':text-is("Email Address already exist!")')).toBeVisible();
+    console.log("visible warning");
+  });
+
+  //  test('Test Case 6: Login with saved data and delete acc', async ({ page }) => {
   //   const signupPage = new SignupPage(page);
   //   const user = getLatestUser();
   //   await signupPage.goto();

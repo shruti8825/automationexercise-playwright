@@ -68,6 +68,14 @@ class SignupPage extends BasePage {
     await this.page.locator(this.loginBtn).click();
   }
 
+   async existingUserSignup(username,email ) {
+    await this.page.locator(this.signupLoginBtn).click();
+    await expect(this.page.locator(this.loginTitle)).toBeVisible();
+    await this.page.locator(this.nameInput).fill(username);
+    await this.page.locator(this.emailInput).fill(email);
+    await this.page.locator(this.signupSubmit).click();
+  }
+
   async createRandomAccount() {
     const user = generateRandomUser();
     console.log('Generated:', user.username);

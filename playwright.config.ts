@@ -15,7 +15,6 @@ export default defineConfig({
   testDir: './tests',
 
   /* maximum time one test can run */
-
   expect:{
     timeout: 5000
   },

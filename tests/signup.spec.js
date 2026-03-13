@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const { SignupPage } = require('../pages/SignupPage');
 const { getLatestUser } = require('../utils/testData');
 
-
+//practice
  test('Test case 1 : open website and fetch all <p>', async ({page}) => {
       const signupPage = new SignupPage(page);
       await signupPage.goto();
@@ -11,6 +11,7 @@ const { getLatestUser } = require('../utils/testData');
       console.log('All product names:', dressnames);
   });
 
+  //-------------------------test cases from website------------------------
   test('Test Case 2: Signup + save data', async ({ page }) => {
     const signupPage = new SignupPage(page);
     await signupPage.goto();

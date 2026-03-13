@@ -18,7 +18,6 @@ function generateInvalidUser() {
   return invaliduser;
 }
 
-
 function getLatestUser() {
   try {
     const data = fs.readFileSync('latest-user.json', 'utf8');

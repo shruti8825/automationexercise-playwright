@@ -21,7 +21,7 @@ const { getLatestUser } = require('../utils/testData');
 
    test('Test Case 3: Login with saved data verify username and logout', async ({ page }) => {
     const signupPage = new SignupPage(page);
-    const user = getLatestUser();
+    const user = await getLatestUser();
     await signupPage.goto();
     await signupPage.login(user.email, user.password);
     await signupPage.verifyLoggedInAs(user.username);
@@ -40,7 +40,7 @@ const { getLatestUser } = require('../utils/testData');
 
   test('Test Case 5: verify already registered user', async ({ page }) => {
     const signupPage = new SignupPage(page);
-    const user1 = getLatestUser();
+    const user1 = await getLatestUser();
     await signupPage.goto();
     await signupPage.existingUserSignup(user1.username, user1.email)
     await expect(page.locator(':text-is("Email Address already exist!")')).toBeVisible();
